@@ -7,12 +7,14 @@ const ExpenseItem = (props) => {
     // const expPrice=234.90;
     // const expTitle='Car Insurance';
     // const location = 'Location';
-
+    function clickFunction() {
+        console.log('clicked');
+    }
     return (
         <Card className="expense-item">
             <ExpenseDate date={props.expense.date} />
             <ExpenseDetails amount={props.expense.amount} location={props.expense.location} title={props.expense.title}/>
-            <div></div>
+            <button onClick={clickFunction}>Delete Expense</button>
         </Card>
     );
 }

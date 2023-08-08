@@ -1,12 +1,22 @@
 import Card from "../UI/Card";
-import './ExpenseForm.css'
+import {useState} from 'react';
+import './ExpenseForm.css'  
 const ExpenseForm = () => {
+    const [enteredTitle,setTitle]=useState("0");
+    const [enteredAmount,setAmount]=useState("0");
+    const [enteredDate,setDate]=useState("0");
     const titleHandler =(e)=>{
-        console.log(e.target.value);
-    }
+        setTitle(e.target.value);
+        //console.log(e.target.value);
+    };
     const amountHandler =(e)=>{
-        console.log(e.target.value);
-    }
+        setAmount(e.target.value);
+        //console.log(e.target.value);
+    };
+    const datetHandler =(e)=>{
+        setDate(e.target.value);
+        //console.log(e.target.value);
+    };
     return (
         <Card className="input-form">
             <div className="new-expense">
@@ -21,7 +31,7 @@ const ExpenseForm = () => {
                     </div>
                     <div className="date">
                         <label htmlFor="date">Date:</label>
-                        <input type="date" />
+                        <input type="date" onChange={datetHandler}/>
                     </div>
                     <div className="button"></div>
                     <button type="submit">Add Expense</button>

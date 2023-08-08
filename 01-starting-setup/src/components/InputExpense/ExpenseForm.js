@@ -2,9 +2,9 @@ import Card from "../UI/Card";
 import {useState} from 'react';
 import './ExpenseForm.css'  
 const ExpenseForm = () => {
-    const [enteredTitle,setTitle]=useState("0");
-    const [enteredAmount,setAmount]=useState("0");
-    const [enteredDate,setDate]=useState("0");
+    const [enteredTitle,setTitle]=useState('');
+    const [enteredAmount,setAmount]=useState('');
+    const [enteredDate,setDate]=useState('');
     const titleHandler =(e)=>{
         setTitle(e.target.value);
         //console.log(e.target.value);
@@ -17,24 +17,36 @@ const ExpenseForm = () => {
         setDate(e.target.value);
         //console.log(e.target.value);
     };
+    const submitForm=(e)=>{
+        e.preventDefault();
+        const expenseData={
+            title:enteredTitle,
+            amount:enteredAmount,
+            date:new Date(enteredDate)
+        }
+        console.log(expenseData);
+        setTitle('');
+        setAmount('');
+        setDate('');
+    }
     return (
         <Card className="input-form">
             <div className="new-expense">
-                <form action="#">
+                <form onSubmit={submitForm}>
                     <div className="title">
                         <label htmlFor="title">Title:</label>
-                        <input type="text" onChange={titleHandler}/>
+                        <input type="text" value={enteredTitle} onChange={titleHandler}/>
                     </div>
                     <div className="amount">
                         <label htmlFor="amount">Amount:</label>
-                        <input type="number" onChange={amountHandler}/>
+                        <input type="number" value={enteredAmount} onChange={amountHandler}/>
                     </div>
                     <div className="date">
                         <label htmlFor="date">Date:</label>
-                        <input type="date" onChange={datetHandler}/>
+                        <input type="date" value={enteredDate} onChange={datetHandler}/>
                     </div>
                     <div className="button"></div>
-                    <button type="submit">Add Expense</button>
+                    <button type="submit" >Add Expense</button>
                 </form>
             </div>
         </Card>

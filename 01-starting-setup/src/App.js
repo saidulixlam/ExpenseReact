@@ -23,6 +23,19 @@ function App() {
   const filterFunction = (selectedYear) => {
     setFilteredYear(selectedYear);
   }
+  const filterItems=items.filter(item=>{
+    return item.date.getFullYear().toString()===filteredYear;
+  });
+  
+  let expenseContent=<p>no items here...</p>;
+  if(filterItems.length > 0){
+    expenseContent=filterItems.map((item) => (
+      <ExpenseItem
+        expense={item}
+        key={item.id}
+      />
+    ))
+  };
   return (
     <div>
       <h2>Expense Items </h2>
@@ -30,12 +43,7 @@ function App() {
       <NewExpense onAddexpense={newExpenseAdder} />
       <Card>
         <ExpensesFilter onChangeFilter={filterFunction} selected={filteredYear} />
-        {items.map((item) => (
-          <ExpenseItem
-            expense={item}
-            key={item.id}
-          />
-        ))}
+        {expenseContent}
       </Card>
     </div>
   );

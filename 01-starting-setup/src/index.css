@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin-right: 2rem;
+  margin-left: 2rem;
 }
 
 html {

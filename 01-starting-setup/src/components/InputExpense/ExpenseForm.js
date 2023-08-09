@@ -1,7 +1,7 @@
 import Card from "../UI/Card";
 import {useState} from 'react';
 import './ExpenseForm.css'  
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle,setTitle]=useState('');
     const [enteredAmount,setAmount]=useState('');
     const [enteredDate,setDate]=useState('');
@@ -22,9 +22,10 @@ const ExpenseForm = () => {
         const expenseData={
             title:enteredTitle,
             amount:enteredAmount,
-            date:new Date(enteredDate)
+            date:new Date(enteredDate),
+            location:"location"
         }
-        console.log(expenseData);
+        props.onFormSubmit(expenseData);
         setTitle('');
         setAmount('');
         setDate('');
@@ -45,6 +46,10 @@ const ExpenseForm = () => {
                         <label htmlFor="date">Date:</label>
                         <input type="date" value={enteredDate} onChange={datetHandler}/>
                     </div>
+                    {/* <div className="location">
+                        <label htmlFor="location">Place:</label>
+                        <input type="text"/>
+                    </div> */}
                     <div className="button"></div>
                     <button type="submit" >Add Expense</button>
                 </form>

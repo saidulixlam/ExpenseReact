@@ -2,7 +2,7 @@ import Card from '../UI/Card';
 import './ExpenseDetails.css';
 const ExpenseDetails= (props) => {
     return ( 
-        <Card className="expenses">
+        <Card className="expense-item">
             <div className="expense-item__description">
                 <h2>{props.title}</h2>
             </div>

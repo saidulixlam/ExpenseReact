@@ -46,7 +46,7 @@
   .new-expense button.alternative:active {
     background-color: #ddb3f8;
   } 
-  .title input,.amount input,.date input{
+  .title input,.amount input,.date input,.location input{
     width: 50%;
     border-radius: 4px;
     height:2rem;
@@ -63,8 +63,14 @@
     margin-top: 0.5rem;
   }
   
-  .date {
+  .date{
     font-size: 1rem;
     font-weight: bold;
+    margin-top: 0.5rem;
+  }
+  .location{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #220131;
     margin-top: 0.5rem;
   }

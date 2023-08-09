@@ -12,29 +12,30 @@ function App() {
     { id: 'e3', title: 'New Desk', amount: 70.90, date: new Date(2021, 2, 12), location: 'Location' },
     { id: 'e4', title: 'Toilet Paper', amount: 104.93, date: new Date(2020, 9, 12), location: 'Location' }
   ]
-  const [items,setExpenses]=useState(dummy_items);
-  const [filteredYear,setFilteredYear]=useState('2020');
+  const [items, setExpenses] = useState(dummy_items);
+  const [filteredYear, setFilteredYear] = useState('2020');
 
   function newExpenseAdder(expense) {
-    setExpenses((prev)=>{
-      return [expense,...prev]
+    setExpenses((prev) => {
+      return [expense, ...prev]
     })
   };
-  const filterFunction = (selectedYear)=>{
+  const filterFunction = (selectedYear) => {
     setFilteredYear(selectedYear);
   }
   return (
     <div>
       <h2>Expense Items </h2>
-      
-      <NewExpense onAddexpense={newExpenseAdder}/>
+
+      <NewExpense onAddexpense={newExpenseAdder} />
       <Card>
-        <ExpensesFilter onChangeFilter={filterFunction} selected={filteredYear}/>
-      {items.map((item)=>(
-        <ExpenseItem
-        expense={item}
-      />
-      ))}   
+        <ExpensesFilter onChangeFilter={filterFunction} selected={filteredYear} />
+        {items.map((item) => (
+          <ExpenseItem
+            expense={item}
+            key={item.id}
+          />
+        ))}
       </Card>
     </div>
   );

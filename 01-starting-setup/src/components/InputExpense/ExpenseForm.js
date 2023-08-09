@@ -23,7 +23,7 @@ const ExpenseForm = (props) => {
             title:enteredTitle,
             amount:enteredAmount,
             date:new Date(enteredDate),
-            location:"location"
+            location:"Location",
         }
         props.onFormSubmit(expenseData);
         setTitle('');

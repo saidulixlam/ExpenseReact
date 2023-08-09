@@ -28,7 +28,11 @@ function App() {
   });
   
   let expenseContent=<p>no items here...</p>;
+  let newOne;
   if(filterItems.length > 0){
+    if(filterItems.length == 1){
+      newOne=<p>Only single Expense here. Please add more..."</p>
+    }
     expenseContent=filterItems.map((item) => (
       <ExpenseItem
         expense={item}
@@ -43,6 +47,7 @@ function App() {
       <NewExpense onAddexpense={newExpenseAdder} />
       <Card>
         <ExpensesFilter onChangeFilter={filterFunction} selected={filteredYear} />
+        {newOne}
         {expenseContent}
       </Card>
     </div>
